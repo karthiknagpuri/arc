@@ -934,41 +934,6 @@ export default function Home() {
           ))}
         </div>
 
-        {/* Premium animated corner accents - responsive sizing */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: luxuryEase }}
-          className="absolute top-4 left-4 sm:top-8 sm:left-8 md:top-16 md:left-16 w-12 h-12 sm:w-20 sm:h-20 md:w-32 md:h-32 border-l border-t sm:border-l-2 sm:border-t-2 border-gold/30 sm:border-gold/40"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.1 }}
-          className="absolute top-4 right-4 sm:top-8 sm:right-8 md:top-16 md:right-16 w-12 h-12 sm:w-20 sm:h-20 md:w-32 md:h-32 border-r border-t sm:border-r-2 sm:border-t-2 border-gold/30 sm:border-gold/40"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.2 }}
-          className="absolute bottom-4 left-4 sm:bottom-8 sm:left-8 md:bottom-16 md:left-16 w-12 h-12 sm:w-20 sm:h-20 md:w-32 md:h-32 border-l border-b sm:border-l-2 sm:border-b-2 border-gold/30 sm:border-gold/40"
-        />
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.3 }}
-          className="absolute bottom-4 right-4 sm:bottom-8 sm:right-8 md:bottom-16 md:right-16 w-12 h-12 sm:w-20 sm:h-20 md:w-32 md:h-32 border-r border-b sm:border-r-2 sm:border-b-2 border-gold/30 sm:border-gold/40"
-        />
-
-        {/* Animated center frame - hidden on mobile */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 2 }}
-          className="hidden sm:block absolute inset-12 sm:inset-20 md:inset-32 lg:inset-40 border border-gold/15 sm:border-gold/20"
-          style={{ boxShadow: "inset 0 0 100px rgba(180, 150, 100, 0.05)" }}
-        />
-
         {/* Vertical accent lines - shorter on mobile */}
         <motion.div
           initial={{ height: 0 }}
