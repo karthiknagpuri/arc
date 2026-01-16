@@ -814,20 +814,9 @@ export default function Home() {
       <GallerySlides images={galleryImages} />
 
       {/* Ultra-Luxury CTA Section - Ascend & Liberate (Mobile-First) */}
-      <section className="relative py-32 sm:py-48 md:py-64 lg:py-80 overflow-hidden">
-        {/* Background with cinematic overlay */}
-        <div className="absolute inset-0">
-          <Image
-            src="/images/IMG_2539.JPG"
-            alt="Background"
-            fill
-            className="object-cover scale-105 sm:scale-110"
-            priority
-          />
-          <div className="absolute inset-0 bg-charcoal/90 sm:bg-charcoal/85" />
-          {/* Subtle vignette effect */}
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,20,30,0.4)_100%)]" />
-        </div>
+      <section className="relative py-32 sm:py-48 md:py-64 lg:py-80 overflow-hidden bg-charcoal">
+        {/* Subtle vignette effect */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,20,30,0.3)_100%)]" />
 
         {/* Animated floating particles - hidden on mobile for performance */}
         <div className="hidden sm:block">
