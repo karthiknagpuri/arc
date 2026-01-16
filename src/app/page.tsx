@@ -778,36 +778,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* The Vision - Minimalist Luxury */}
-      <section className="relative py-48 md:py-64 bg-cream overflow-hidden">
+      {/* The Vision - Minimalist Luxury with Green */}
+      <section className="relative py-48 md:py-64 bg-[#1a3a2f] overflow-hidden">
         {/* Subtle accent line */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gold/20" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gold/30" />
 
         <div className="max-w-5xl mx-auto px-8">
           <RevealOnScroll className="text-center">
             {/* Minimal label */}
-            <span className="inline-block text-gold/60 text-[10px] tracking-[0.5em] uppercase font-light mb-12">
+            <span className="inline-block text-gold/70 text-[10px] tracking-[0.5em] uppercase font-light mb-12">
               The Vision
             </span>
 
             {/* Hero statement */}
-            <h2 className="font-serif text-4xl md:text-6xl lg:text-8xl text-charcoal font-normal leading-[1.1] tracking-tight">
+            <h2 className="font-serif text-4xl md:text-6xl lg:text-8xl text-white font-normal leading-[1.1] tracking-tight">
               Where Vision
               <br />
-              <span className="text-gold/80">Meets Reality</span>
+              <span className="text-gold">Meets Reality</span>
             </h2>
 
             {/* Elegant separator */}
             <div className="mt-16 flex items-center justify-center gap-4">
-              <div className="w-12 h-px bg-charcoal/10" />
-              <div className="w-2 h-2 rotate-45 border border-gold/40" />
-              <div className="w-12 h-px bg-charcoal/10" />
+              <div className="w-12 h-px bg-white/20" />
+              <div className="w-2 h-2 rotate-45 border border-gold/50" />
+              <div className="w-12 h-px bg-white/20" />
             </div>
           </RevealOnScroll>
         </div>
 
         {/* Bottom accent line */}
-        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gold/20" />
+        <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gold/30" />
       </section>
 
       {/* Premium Gallery Slides Section */}
