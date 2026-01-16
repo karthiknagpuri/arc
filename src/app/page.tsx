@@ -503,6 +503,7 @@ export default function Home() {
   const heroY = useTransform(scrollYProgress, [0, 0.5], ["0%", "20%"])
 
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -511,6 +512,18 @@ export default function Home() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Close mobile menu on scroll
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [isMobileMenuOpen])
 
   const journeySteps = [
     { numeral: "I", title: "Discover", description: "Begin your journey into a world of limitless possibility", image: "/images/IMG_2204.JPG" },
@@ -578,9 +591,11 @@ export default function Home() {
           boxShadow: isScrolled ? "0 1px 0 rgba(180, 150, 100, 0.1)" : "none"
         }}
       >
-        <div className="max-w-7xl mx-auto px-8 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8 flex items-center justify-between">
           {/* Placeholder for logo space - actual logo is animated separately */}
-          <div ref={logoTargetRef} className="w-[100px] h-[55px]" />
+          <div ref={logoTargetRef} className="w-[80px] h-[44px] sm:w-[100px] sm:h-[55px]" />
+
+          {/* Desktop Navigation */}
           <nav className={`hidden md:flex items-center gap-12 ${isScrolled ? "text-charcoal" : "text-white"}`}>
             {[
               { href: "#story", label: "Story" },
@@ -602,8 +617,84 @@ export default function Home() {
               </motion.a>
             ))}
           </nav>
+
+          {/* Mobile Hamburger Button */}
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className={`md:hidden relative w-8 h-8 flex flex-col items-center justify-center gap-1.5 ${isScrolled ? "text-charcoal" : "text-white"}`}
+            aria-label="Toggle menu"
+          >
+            <motion.span
+              animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
+              className="w-6 h-px bg-current origin-center transition-colors"
+            />
+            <motion.span
+              animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+              className="w-6 h-px bg-current transition-colors"
+            />
+            <motion.span
+              animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+              className="w-6 h-px bg-current origin-center transition-colors"
+            />
+          </button>
         </div>
       </motion.header>
+
+      {/* Mobile Menu Overlay */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 z-40 md:hidden"
+          >
+            {/* Backdrop */}
+            <div
+              className="absolute inset-0 bg-charcoal/95 backdrop-blur-xl"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Menu Content */}
+            <motion.nav
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.4, delay: 0.1 }}
+              className="relative h-full flex flex-col items-center justify-center gap-8"
+            >
+              {[
+                { href: "#story", label: "Story" },
+                { href: "#journey", label: "Journey" },
+                { href: "#pillars", label: "Pillars" },
+                { href: "#gallery", label: "Gallery" },
+                { href: "#contact", label: "Contact" }
+              ].map((item, i) => (
+                <motion.a
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: 0.1 + i * 0.05 }}
+                  className="text-white text-2xl font-serif font-light tracking-wider hover:text-gold transition-colors duration-300"
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+
+              {/* Decorative element */}
+              <motion.div
+                initial={{ opacity: 0, scaleX: 0 }}
+                animate={{ opacity: 1, scaleX: 1 }}
+                transition={{ duration: 0.6, delay: 0.4 }}
+                className="mt-8 w-16 h-px bg-gold/50"
+              />
+            </motion.nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* Hero Section - Cinematic Image Slideshow */}
       <HeroSlideshow heroRef={heroRef} heroOpacity={heroOpacity} heroScale={heroScale} heroY={heroY} />
@@ -814,7 +905,7 @@ export default function Home() {
       <GallerySlides images={galleryImages} />
 
       {/* Ultra-Luxury CTA Section - Ascend & Liberate (Mobile-First) */}
-      <section className="relative py-32 sm:py-48 md:py-64 lg:py-80 overflow-hidden bg-charcoal">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-charcoal">
         {/* Subtle vignette effect */}
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,20,30,0.3)_100%)]" />
 
