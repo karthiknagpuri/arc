@@ -813,81 +813,249 @@ export default function Home() {
       {/* Premium Gallery Slides Section */}
       <GallerySlides images={galleryImages} />
 
-      {/* Premium CTA Section - Luxury Version */}
-      <section className="relative py-56 md:py-72 overflow-hidden">
-        {/* Background with premium overlay */}
+      {/* Ultra-Luxury CTA Section - Ascend & Liberate */}
+      <section className="relative py-64 md:py-80 lg:py-96 overflow-hidden">
+        {/* Background with cinematic overlay */}
         <div className="absolute inset-0">
           <Image
             src="/images/IMG_2539.JPG"
             alt="Background"
             fill
-            className="object-cover scale-105"
+            className="object-cover scale-110"
           />
-          <div className="absolute inset-0 bg-charcoal/90" />
+          <div className="absolute inset-0 bg-charcoal/85" />
+          {/* Subtle vignette effect */}
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(15,20,30,0.4)_100%)]" />
         </div>
 
-        {/* Premium corner accents */}
-        <div className="absolute top-12 left-12 w-24 h-24 border-l border-t border-gold/30" />
-        <div className="absolute top-12 right-12 w-24 h-24 border-r border-t border-gold/30" />
-        <div className="absolute bottom-12 left-12 w-24 h-24 border-l border-b border-gold/30" />
-        <div className="absolute bottom-12 right-12 w-24 h-24 border-r border-b border-gold/30" />
+        {/* Animated floating particles */}
+        {[...Array(6)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-gold/30 rounded-full"
+            style={{
+              left: `${15 + i * 15}%`,
+              top: `${20 + (i % 3) * 25}%`,
+            }}
+            animate={{
+              y: [0, -30, 0],
+              opacity: [0.2, 0.5, 0.2],
+              scale: [1, 1.5, 1],
+            }}
+            transition={{
+              duration: 4 + i * 0.5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: i * 0.8,
+            }}
+          />
+        ))}
 
-        {/* Subtle center frame */}
-        <div className="absolute inset-20 md:inset-32 border border-gold/10" />
+        {/* Premium animated corner accents */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: luxuryEase }}
+          className="absolute top-16 left-16 w-32 h-32 border-l-2 border-t-2 border-gold/40"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.1 }}
+          className="absolute top-16 right-16 w-32 h-32 border-r-2 border-t-2 border-gold/40"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.2 }}
+          className="absolute bottom-16 left-16 w-32 h-32 border-l-2 border-b-2 border-gold/40"
+        />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.2, ease: luxuryEase, delay: 0.3 }}
+          className="absolute bottom-16 right-16 w-32 h-32 border-r-2 border-b-2 border-gold/40"
+        />
 
-        <div className="relative max-w-5xl mx-auto px-8 text-center">
-          <RevealOnScroll>
-            {/* Elegant top decoration */}
-            <div className="flex items-center justify-center gap-6 mb-16">
-              <div className="w-16 h-px bg-gold/30" />
-              <div className="w-1.5 h-1.5 rotate-45 bg-gold/60" />
-              <div className="w-16 h-px bg-gold/30" />
-            </div>
+        {/* Animated center frame with glow */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 2 }}
+          className="absolute inset-24 md:inset-40 border border-gold/20"
+          style={{ boxShadow: "inset 0 0 100px rgba(180, 150, 100, 0.05)" }}
+        />
 
-            {/* Premium label */}
-            <span className="inline-block text-gold/70 text-[10px] tracking-[0.5em] uppercase font-light mb-10">
-              Your Future Awaits
-            </span>
+        {/* Vertical accent lines */}
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "120px" }}
+          transition={{ duration: 1.5, ease: luxuryEase }}
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-b from-transparent via-gold/40 to-transparent"
+        />
+        <motion.div
+          initial={{ height: 0 }}
+          whileInView={{ height: "120px" }}
+          transition={{ duration: 1.5, ease: luxuryEase, delay: 0.3 }}
+          className="absolute bottom-0 left-1/2 -translate-x-1/2 w-px bg-gradient-to-t from-transparent via-gold/40 to-transparent"
+        />
 
-            {/* Split headline styling */}
-            <h2 className="font-serif text-5xl md:text-7xl lg:text-8xl font-normal leading-[1.05] tracking-tight mb-12">
-              <span className="text-white/95">Ascend</span>
-              <span className="text-gold/50 mx-4 font-light">&</span>
-              <span className="text-gold/90">Liberate</span>
-            </h2>
+        <div className="relative max-w-6xl mx-auto px-8 text-center">
+          {/* Animated top ornament */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: luxuryEase }}
+            className="flex items-center justify-center gap-8 mb-20"
+          >
+            <motion.div
+              animate={{ scaleX: [0.8, 1, 0.8] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="w-24 h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent"
+            />
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+              className="w-3 h-3 border border-gold/60 rotate-45"
+            />
+            <motion.div
+              animate={{ scaleX: [0.8, 1, 0.8] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="w-24 h-px bg-gradient-to-l from-transparent via-gold/50 to-transparent"
+            />
+          </motion.div>
 
-            {/* Elegant diamond separator */}
-            <div className="flex items-center justify-center gap-4 mb-12">
-              <div className="w-20 h-px bg-white/10" />
-              <div className="w-2.5 h-2.5 rotate-45 border border-gold/50" />
-              <div className="w-20 h-px bg-white/10" />
-            </div>
+          {/* Premium animated label */}
+          <motion.span
+            initial={{ opacity: 0, y: 20, letterSpacing: "0.3em" }}
+            whileInView={{ opacity: 1, y: 0, letterSpacing: "0.5em" }}
+            transition={{ duration: 1.2, ease: luxuryEase }}
+            className="inline-block text-gold/80 text-[11px] tracking-[0.5em] uppercase font-light mb-12"
+          >
+            Your Future Awaits
+          </motion.span>
 
-            {/* Description with refined typography */}
-            <p className="text-lg md:text-xl text-platinum/70 mb-16 max-w-2xl mx-auto font-light leading-relaxed tracking-wide">
-              Join a community of visionaries shaping the future.
-              <br className="hidden md:block" />
-              Your journey to extraordinary begins now.
-            </p>
-
-            {/* Premium CTA button */}
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.4, ease: luxuryEase }}
-              className="group relative bg-transparent border border-gold/60 text-gold px-16 py-5 font-light text-xs tracking-[0.3em] uppercase overflow-hidden transition-all duration-700 hover:border-gold hover:text-charcoal"
+          {/* Staggered headline animation */}
+          <div className="font-serif text-6xl md:text-8xl lg:text-9xl font-normal leading-[1] tracking-tight mb-14">
+            <motion.span
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: luxuryEase, delay: 0.2 }}
+              className="inline-block text-white"
             >
-              <span className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-700 ease-out" />
-              <span className="relative z-10">Begin Your Journey</span>
-            </motion.button>
+              Ascend
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, scale: 0 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, ease: luxuryEase, delay: 0.5 }}
+              className="inline-block text-gold/40 mx-6 font-extralight"
+            >
+              &
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1, ease: luxuryEase, delay: 0.7 }}
+              className="inline-block text-gold"
+            >
+              Liberate
+            </motion.span>
+          </div>
 
-            {/* Bottom decoration */}
-            <div className="flex items-center justify-center gap-6 mt-20">
-              <div className="w-8 h-px bg-gold/20" />
-              <div className="w-1 h-1 rotate-45 bg-gold/40" />
-              <div className="w-8 h-px bg-gold/20" />
-            </div>
-          </RevealOnScroll>
+          {/* Animated diamond separator with glow */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: luxuryEase, delay: 0.9 }}
+            className="flex items-center justify-center gap-6 mb-14"
+          >
+            <div className="w-32 h-px bg-gradient-to-r from-transparent to-white/20" />
+            <motion.div
+              animate={{ rotate: [0, 180, 360], scale: [1, 1.2, 1] }}
+              transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+              className="w-4 h-4 border-2 border-gold/70 rotate-45"
+              style={{ boxShadow: "0 0 20px rgba(180, 150, 100, 0.3)" }}
+            />
+            <div className="w-32 h-px bg-gradient-to-l from-transparent to-white/20" />
+          </motion.div>
+
+          {/* Description with staggered lines */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.1 }}
+            className="mb-20"
+          >
+            <p className="text-xl md:text-2xl text-platinum/60 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.2 }}
+                className="block"
+              >
+                Join a community of visionaries shaping the future.
+              </motion.span>
+              <motion.span
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.4 }}
+                className="block mt-2 text-platinum/80"
+              >
+                Your journey to extraordinary begins now.
+              </motion.span>
+            </p>
+          </motion.div>
+
+          {/* Ultra-Premium CTA button */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 1.6 }}
+          >
+            <motion.button
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ duration: 0.4, ease: luxuryEase }}
+              className="group relative bg-transparent border-2 border-gold/70 text-gold px-20 py-6 font-light text-xs tracking-[0.4em] uppercase overflow-hidden transition-all duration-1000 hover:border-gold hover:text-charcoal"
+              style={{ boxShadow: "0 0 40px rgba(180, 150, 100, 0.15)" }}
+            >
+              {/* Animated background fill */}
+              <span className="absolute inset-0 bg-gold transform -translate-x-full group-hover:translate-x-0 transition-transform duration-1000 ease-out" />
+              {/* Shimmer effect */}
+              <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 delay-300" />
+              <span className="relative z-10 flex items-center justify-center gap-4">
+                Begin Your Journey
+                <motion.svg
+                  className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  animate={{ x: [0, 4, 0] }}
+                  transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </motion.svg>
+              </span>
+            </motion.button>
+          </motion.div>
+
+          {/* Bottom animated ornament */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.8 }}
+            className="flex items-center justify-center gap-4 mt-24"
+          >
+            {[...Array(3)].map((_, i) => (
+              <motion.div
+                key={i}
+                animate={{ opacity: [0.2, 0.6, 0.2], scale: [0.8, 1, 0.8] }}
+                transition={{ duration: 2, repeat: Infinity, delay: i * 0.3 }}
+                className="w-1.5 h-1.5 bg-gold/50 rotate-45"
+              />
+            ))}
+          </motion.div>
         </div>
       </section>
 
